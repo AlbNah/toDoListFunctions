@@ -44,6 +44,9 @@ const App = () => {
     setSearchValue(event.target.value)
   }
 
+  const filterUsersBySearch = (el) => {
+    return el.name.toLowerCase().includes(searchValue.toLocaleLowerCase())
+  }
 
   return (
     <Card className="main">
@@ -73,7 +76,7 @@ const App = () => {
       </Card>
       <Card > 
           <List className="list">
-            {users.map(el => {
+            {users.filter(el => filterUsersBySearch(el)).map(el => {
               return (
                 <Listitem className="listitem" key={el.id}>
                  <Text className="text">{el.name}</Text> 
