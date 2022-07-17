@@ -48,6 +48,12 @@ const App = () => {
     return el.name.toLowerCase().includes(searchValue.toLocaleLowerCase())
   }
 
+  const deleteUser = (id) => {
+    let usersList = [...users];
+    usersList = usersList.filter(el => el.id !== id);
+    setUsers(usersList)
+  }
+
   return (
     <Card className="main">
       <Card className="sides">
@@ -83,7 +89,7 @@ const App = () => {
                  <Text className="text">{el.surname}</Text> 
                  <Text className="text">{el.hobby}</Text> 
                  <Text className="text">{el.age}</Text>
-                 <Button className="button">delete</Button>
+                 <Button onClick={() => deleteUser(el.id)} className="button">delete</Button>
                 </Listitem>
               )
             })}
